@@ -5,7 +5,9 @@
  */
 package com.SSDIproject.ManpowerAllocatorSSDI.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,25 +18,25 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
  
 @Entity
-public class JobTypes {
+public class WorkGroups {
  
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
      
-    private String typeName;
+    private String workGroupName;
     
-    @OneToMany(mappedBy="jobType", cascade = CascadeType.MERGE, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy="groupId", cascade = CascadeType.MERGE, fetch = FetchType.LAZY, orphanRemoval = true)
     @JsonManagedReference
-    private Set<Ranking> ranks = null;
+    private Set<Jobs> jobs = null;
     
-    public JobTypes(){
-      
+    public WorkGroups(){
+        
     }
  
-    public JobTypes(int id, String typeName){
+    public WorkGroups(int id, String typeName){
         this.id = id;
-        this.typeName = typeName;
+        this.workGroupName = workGroupName;
     }
     
     
@@ -46,27 +48,27 @@ public class JobTypes {
         this.id = id;
     }
  
-    public String getTypeName() {
-        return typeName;
+    public String getWorkGroupName() {
+        return workGroupName;
     }
  
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
+    public void setWorkGroupName(String typeName) {
+        this.workGroupName = typeName;
     }
     
-    public void setRanks(Set<Ranking> ranks) {
-        if (this.ranks == null) {
-            this.ranks = ranks;
-        } else if(this.ranks != ranks) {
-            this.ranks.clear();
-            if(ranks != null){
-                this.ranks.addAll(ranks);
+    public void setJobs(Set<Jobs> jobs) {
+        if (this.jobs == null) {
+            this.jobs = jobs;
+        } else if(this.jobs != jobs) {
+            this.jobs.clear();
+            if(jobs != null){
+                this.jobs.addAll(jobs);
             }
         }
     }
     
-    public Set<Ranking> getRanks(){
-        return ranks;
+    public Set<Jobs> getJobs(){
+        return jobs;
     }
          
 }
