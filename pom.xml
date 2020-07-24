@@ -12,7 +12,7 @@
 	<groupId>com.SSDIproject</groupId>
 	<artifactId>ManpowerAllocatorSSDI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ManpowerAllocatorSSDI</name>
+	<name>MPABack</name>
 	<description>SSDI Project</description>
 
 	<properties>
